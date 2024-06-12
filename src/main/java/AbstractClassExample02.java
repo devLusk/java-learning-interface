@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class AbstractClassExample02 {
     abstract static class Shape {
         public abstract void calcArea();
