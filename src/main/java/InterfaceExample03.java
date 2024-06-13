@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class InterfaceExample03 {
 
     interface Shape {
@@ -116,16 +119,16 @@ public class InterfaceExample03 {
     }
 
     public static void main(String[] args) {
-        Circle circle = new Circle(4);
-        Triangle triangle = new Triangle(4, 2, 5, 12, 3);
-        Rectangle rectangle = new Rectangle(8, 10);
-        Diamond diamond = new Diamond(12, 4, 8);
-        Square square = new Square(4);
+        List<Shape> shapes = new ArrayList<>();
+        shapes.add(new Circle(4));
+        shapes.add(new Triangle(4, 2, 5, 12, 3));
+        shapes.add(new Rectangle(8, 10));
+        shapes.add(new Diamond(12, 4, 8));
+        shapes.add(new Square(4));
 
-        showResult(circle);
-        showResult(triangle);
-        showResult(rectangle);
-        showResult(diamond);
-        showResult(square);
+        for(int i = 0; i < shapes.size(); i++) {
+            Shape shape = shapes.get(i);
+            showResult(shape);
+        }
     }
 }
