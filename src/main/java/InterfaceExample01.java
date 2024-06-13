@@ -53,7 +53,9 @@ public class InterfaceExample01 {
     }
 
     public static void executingFunctions(Vehicle vehicle, String[] funcs) {
-        for (String func : funcs) {
+        for (int i = 0; i < funcs.length; i++) {
+            String func = funcs[i];
+
             switch (func) {
                 case "start":
                     vehicle.start();
