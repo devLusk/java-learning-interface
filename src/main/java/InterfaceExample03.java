@@ -1,127 +1,131 @@
 public class InterfaceExample03 {
-    // Implementar o Shape para as classes: Circulo, triangulo, retangulo, losangulo, quadrado.
 
     interface Shape {
+        double perimeter();
         double area();
-        double perimetro();
     }
 
-    public static void mostrar(Shape shape) {
+    static void showResult(Shape shape) {
         System.out.println("Area: " + shape.area());
-        System.out.println("Perimetro: " + shape.perimetro());
+        System.out.println("Perimeter: " + shape.perimeter());
         System.out.println("\n");
     }
 
-    public static class Quadrado implements Shape {
-        double lado;
+    static class Circle implements Shape {
+        double radius;
+
+        public Circle(double radius) {
+            this.radius = radius;
+        }
+
+        @Override
+        public double perimeter() {
+            return 2 * (3.14 * radius);
+        }
 
         @Override
         public double area() {
-            return lado * lado;
-        }
-
-        @Override
-        public double perimetro() {
-            return 4 * lado;
+            return 3.14 * (radius * radius);
         }
     }
 
-    public static class Circulo implements Shape {
-        double raio;
-
-        @Override
-        public double area() {
-            return 3.14 * (raio * raio);
-        }
-
-        @Override
-        public double perimetro() {
-            return (2 * 3.14) * raio;
-        }
-    }
-
-    public static class Triangulo implements Shape {
+    static class Triangle implements Shape {
         double base;
-        double altura;
-        double lado1;
-        double lado2;
-        double lado3;
+        double height;
+        double side01;
+        double side02;
+        double side03;
 
-        @Override
-        public double area() {
-            return 0.5 * (base * altura);
+        public Triangle(double base, double height, double side01, double side02, double side03) {
+            this.base = base;
+            this.height = height;
+            this.side01 = side01;
+            this.side02 = side02;
+            this.side03 = side03;
         }
 
         @Override
-        public double perimetro() {
-            return lado1 + lado2 + lado3;
+        public double perimeter() {
+            return side01 + side02 + side03;
+        }
+
+        @Override
+        public double area() {
+            return 0.5 * (base * height);
         }
     }
 
-    public static class Retangulo implements Shape {
-        double largura;
-        double altura;
+    static class Rectangle implements Shape {
+        double length;
+        double width;
 
-        @Override
-        public double area() {
-            return largura * altura;
+        public Rectangle(double length, double width) {
+            this.length = length;
+            this.width = width;
         }
 
         @Override
-        public double perimetro() {
-            return 2 * (largura + altura);
+        public double perimeter() {
+            return (length + width) * 2;
+        }
+
+        @Override
+        public double area() {
+            return length * width;
         }
     }
 
-    public static class Losango implements Shape {
-        double lado1;
-        double lado2;
-        double lado3;
-        double lado4;
-        double diagonalMaior;
-        double diagonalMenor;
+    static class Diamond implements Shape {
+        double length;
+        double diagonal01;
+        double diagonal02;
 
-        @Override
-        public double area() {
-            return (diagonalMaior * diagonalMenor) / 2;
+        public Diamond(double length, double diagonal01, double diagonal02) {
+            this.length = length;
+            this.diagonal01 = diagonal01;
+            this.diagonal02 = diagonal02;
         }
 
         @Override
-        public double perimetro() {
-            return lado1 + lado2 + lado3 + lado4;
+        public double perimeter() {
+            return length * 4;
+        }
+
+        @Override
+        public double area() {
+            return (diagonal01 * diagonal02) / 2;
+        }
+    }
+
+    static class Square implements Shape {
+        double side;
+
+        public Square(double side) {
+            this.side = side;
+        }
+
+        @Override
+        public double perimeter() {
+            return side * 4;
+        }
+
+        @Override
+        public double area() {
+            return side * side;
         }
     }
 
     public static void main(String[] args) {
-        Quadrado quadrado = new Quadrado();
-        quadrado.lado = 10;
+        Circle circle = new Circle(4);
+        Triangle triangle = new Triangle(4, 2, 5, 12, 3);
+        Rectangle rectangle = new Rectangle(8, 10);
+        Diamond diamond = new Diamond(12, 4, 8);
+        Square square = new Square(4);
 
-        Circulo circulo = new Circulo();
-        circulo.raio = 5;
-
-        Triangulo triangulo = new Triangulo();
-        triangulo.base = 12;
-        triangulo.altura = 5;
-        triangulo.lado1 = 12;
-        triangulo.lado2 = 6;
-        triangulo.lado3 = 9;
-
-        Retangulo retangulo = new Retangulo();
-        retangulo.largura = 10;
-        retangulo.altura = 20;
-
-        Losango losango = new Losango();
-        losango.diagonalMaior = 5;
-        losango.diagonalMenor = 2;
-        losango.lado1 = 2;
-        losango.lado2 = 3;
-        losango. lado3 = 4;
-        losango.lado4 = 21;
-
-        mostrar(quadrado);
-        mostrar(circulo);
-        mostrar(triangulo);
-        mostrar(retangulo);
-        mostrar(losango);
+        showResult(circle);
+        showResult(triangle);
+        showResult(rectangle);
+        showResult(diamond);
+        showResult(square);
     }
 }
